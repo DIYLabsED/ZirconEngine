@@ -5,8 +5,8 @@ class ZirconLogger{
  
   private PrintWriter _writer;
   
-  private String _fieldStart = " [ ";
-  private String _fieldEnd = " ] ";
+  private String _fieldStart = " [";
+  private String _fieldEnd = "] ";
   
   private String _timeSeperator = ":";
   private String _dateSeperator = "/";
@@ -19,12 +19,11 @@ class ZirconLogger{
       
     _writer = createWriter(fp);
     
-    log("Logger created", PREFIX_LOG);
-    flush();
+    log("Logger created", PREFIX_LOG, "LOGGER");
       
   }
   
-  public void log(String message, String prefix){
+  public void log(String message, String prefix, String sender){
    
     String log = "";
     
@@ -38,6 +37,10 @@ class ZirconLogger{
     
     log += _fieldStart;
     log += _formattedTime();
+    log += _fieldEnd;
+    
+    log += _fieldStart;
+    log += sender;
     log += _fieldEnd;
     
     log += _fieldStart;
@@ -62,6 +65,7 @@ class ZirconLogger{
   
   public void safeExit(){
    
+    log("Logger safe exit", PREFIX_LOG, "LOGGER");
     flush();
     close();
     
@@ -76,6 +80,8 @@ class ZirconLogger{
     s += minute();
     s += _timeSeperator;
     s += second();    
+    s += _timeSeperator;
+    s += millis();    
     
     return s;
     
@@ -88,8 +94,6 @@ class ZirconLogger{
     s += year();
     s += _dateSeperator;
     s += month();
-    s += _dateSeperator;
-    s += day();
     
     return s;
     

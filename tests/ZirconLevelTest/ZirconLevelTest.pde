@@ -3,6 +3,8 @@ import java.util.ArrayList;
 
  
 ZirconLogger logger;
+ZirconLogger l;
+
 
 ArrayList<String> filePaths = new ArrayList<String>();
 ArrayList<String> levelFiles = new ArrayList<String>();
@@ -12,8 +14,9 @@ ArrayList<String> configFiles = new ArrayList<String>();
 
 void setup() {
  
-  ZirconLogger logger = new ZirconLogger(dataPath("log.log"));
-  
+  ZirconLogger logger = new ZirconLogger("logs/main.log");
+  logger.safeExit();
+    
   size(100, 100);
  
 }
