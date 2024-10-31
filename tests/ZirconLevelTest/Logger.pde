@@ -19,7 +19,7 @@ class ZirconLogger{
       
     _writer = createWriter(fp);
     
-    log("Logger created", PREFIX_LOG, "LOGGER");
+    log("Logger created", PREFIX_LOG, "Logger");
       
   }
   
@@ -65,7 +65,7 @@ class ZirconLogger{
   
   public void safeExit(){
    
-    log("Logger safe exit", PREFIX_LOG, "LOGGER");
+    log("Logger safe exit", PREFIX_LOG, "Logger");
     flush();
     close();
     
@@ -94,6 +94,8 @@ class ZirconLogger{
     s += year();
     s += _dateSeperator;
     s += month();
+    s += _dateSeperator;
+    s += day();
     
     return s;
     
