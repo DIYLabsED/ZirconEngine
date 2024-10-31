@@ -1,0 +1,10 @@
+[
+
+	{
+	
+		"type" : "ZIRCON_CONFIG_SERVER_CONFIG",
+		"serverPort" : "5204"
+
+	}
+
+]
