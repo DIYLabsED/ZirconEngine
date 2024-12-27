@@ -1,0 +1,27 @@
+{
+
+    
+    "folders" : {
+        
+        "scanFolder" : "data/EngineData/",
+        "logFolder" : "/logs/EngineLogs/"
+
+    },
+
+    "version" : {
+
+        "semanticVersion" : "0.0.0",
+        "integerVersion" : 0,
+        "releaseStatus" : "indev"
+
+    },
+
+    "fileExtensions" : {
+
+        "config" : "zcfg",
+        "localisation" : "zloc",
+        "behavior" : "zbvr"
+
+    }
+
+}
