@@ -1,5 +1,4 @@
 {
-
     
     "folders" : {
         
@@ -22,6 +21,9 @@
         "localisation" : "zloc",
         "behavior" : "zbvr"
 
-    }
+    },
+
+    "cake" : "lie"
 
 }
+
