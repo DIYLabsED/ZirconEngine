@@ -5,10 +5,10 @@ void setup(){
   File dir = new File(sketchPath("/data/debug.log"));
   String name = "ZirconEngine";
   
-  logger = new GenericLogger(dir, name);
+  logger = new GenericLogger(dir);
 
-  logger.log(logger.TAG_LOG, "Log started");
+  logger.log(logger.TAG_LOG, "engn", "Log started");
   
   logger.finish();
-  
+
 }
