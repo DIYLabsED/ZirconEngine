@@ -36,9 +36,9 @@ class GenericLogger{
          
   }
    
-  void finish(){
+  public void finish(){
    
-    log(TAG_LOG, _internalName, "Flushing output and closing file");
+    _log(TAG_LOG, _internalName, "Flushing output and closing file");
     
     _writer.flush();
     _writer.close();
@@ -47,7 +47,17 @@ class GenericLogger{
     
   }
   
-  void log(String tag, String name, String msg){
+  public void log(String tag, String name, String msg){
+    
+    if(name == _internalName){
+     throw new IllegalArgumentException("Cannot write to log using same name as logger"); 
+    }
+    
+      _log(tag, name, msg);
+
+  }
+  
+  private void _log(String tag, String name, String msg){
     
     if(_writerClosed){
      throw new IllegalStateException("Cannot write to file once closed"); 
