@@ -1,8 +1,11 @@
+// Generic logging utility
+// Written by DIY Labs
+
 class GenericLogger{
   
   private File _logFile; 
   private PrintWriter _writer;
-  private final String _internalName = "GenericLogger";
+  private final String _internalName = "GenericLogger"; // External logs are not allowed to use name that matches this
   
   private final String _fieldStart = "[ ";
   private final String _fieldEnd = " ]";
@@ -12,11 +15,12 @@ class GenericLogger{
   
   private boolean _writerClosed = false;
   
-  final String TAG_LOG = "LOG";
-  final String TAG_WRN = "WRN";
-  final String TAG_ERR = "ERR";
+  // Provided for convenience, you're welcome
+  public final String TAG_LOG = "LOG";  
+  public final String TAG_WRN = "WRN";
+  public final String TAG_ERR = "ERR";
     
-  GenericLogger(File f){
+  public GenericLogger(File f){
      
     if(f.isDirectory()){      
       throw new IllegalArgumentException("Directory passed to constructor. Pass a file instead");      
@@ -85,7 +89,7 @@ class GenericLogger{
     
   }
   
-  private String _getFormattedDateTime(){
+  private String _getFormattedDateTime(){ // TODO: Possibly add more date formats, currently uses YYYYMMDD 
      
     String out = "";
     
