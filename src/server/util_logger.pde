@@ -57,16 +57,16 @@ class GenericLogger{
      throw new IllegalArgumentException("Cannot write to log using same name as logger"); 
     }
     
-      _log(tag, name, msg);
-
-  }
-  
-  private void _log(String tag, String name, String msg){
-    
     if(_writerClosed){
      throw new IllegalStateException("Cannot write to file once closed"); 
     }
     
+    _log(tag, name, msg);
+
+  }
+  
+  private void _log(String tag, String name, String msg){
+        
     String log = "";
         
     log += _fieldStart;
