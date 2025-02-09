@@ -1,14 +1,11 @@
 GenericLogger logger;
 
 void setup(){
-  
-  File dir = new File(sketchPath("/data/debug.log"));
-  String name = "ZirconEngine";
-  
-  logger = new GenericLogger(dir);
 
-  logger.log(logger.TAG_LOG, "engn", "Log started");
-  
-  logger.finish();
+    fullScreen();
+    background(0);
+    textAlign(CENTER, CENTER);
+    textSize(80);
+    text("WARNING!\n\nThis game contains unrealistic depictions of physics.\n\nViewer discretion advised.", width/2, height/2);
 
 }
