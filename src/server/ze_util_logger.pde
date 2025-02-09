@@ -1,11 +1,11 @@
 // Generic logging utility
 // Written by DIY Labs
 
-class GenericLogger{
+class ZEGenericLogger{
   
   private File _logFile; 
   private PrintWriter _writer;
-  private final String _internalName = "GenericLogger"; // External logs are not allowed to use name that matches this
+  private final String _internalName = "ZELogger"; // External logs are not allowed to use this name
   
   private final String _fieldStart = "[ ";
   private final String _fieldEnd = " ]";
@@ -20,7 +20,7 @@ class GenericLogger{
   public final String TAG_WRN = "WRN";
   public final String TAG_ERR = "ERR";
     
-  public GenericLogger(File f){
+  public ZEGenericLogger(File f){
      
     if(f.isDirectory()){      
       throw new IllegalArgumentException("Directory passed to constructor. Pass a file instead");      
