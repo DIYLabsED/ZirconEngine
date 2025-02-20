@@ -3,12 +3,22 @@
 
 // Written by DIY Labs
 
+ZEGenericLogger logger;
+ZEConfigLoader loader;
+
+
 public void setup(){
 
-    size(400, 400);
-    background(0);
+    logger = new ZEGenericLogger(new File(sketchPath("data/debug.log")));
+    loader = new ZEConfigLoader(new File(sketchPath("data")), logger);
+
+    loader.initialise();
+
+    logger.finish();
+
 
 }
+
 public void draw(){
     
 }

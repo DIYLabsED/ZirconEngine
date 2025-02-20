@@ -1,4 +1,5 @@
 // Generic logging utility
+
 // Written by DIY Labs
 
 class ZEGenericLogger{
