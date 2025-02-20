@@ -1,0 +1,35 @@
+[
+
+    {
+
+        "testfield" : {
+
+            "string" : "string",
+            "int" : 1,
+            "float" : 1.42,
+            "bool" : true,
+            
+            "stringarray" : ["string1", "string2", "string3"],
+            "intarray" : [1, 2, 3],
+            "floatarray" : [1.42, 2.42, 3.42],
+            "boolarray" : [true, false, true],
+
+            "subtestfield": {
+
+                "substring" : "string",
+                "subint" : 1,
+                "subfloat" : 1.42,
+                "subbool" : true,
+
+                "substringarray" : ["string1", "string2", "string3"],
+                "subintarray" : [1, 2, 3],
+                "subfloatarray" : [1.42, 2.42, 3.42],
+                "subboolarray" : [true, false, true]
+
+            }
+
+        }
+
+    }
+
+]
