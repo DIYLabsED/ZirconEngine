@@ -2,7 +2,7 @@
 
     {
 
-        "testnode" : {
+        "testfield" : {
 
             "string" : "string",
             "int" : 1,
@@ -14,7 +14,7 @@
             "floatarray" : [1.42, 2.42, 3.42],
             "boolarray" : [true, false, true],
 
-            "subtestnode": {
+            "subtestfield": {
 
                 "substring" : "string",
                 "subint" : 1,

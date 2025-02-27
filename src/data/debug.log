@@ -1,3 +1,0 @@
-[ 2025/2/26 | 9:58:10:702 ][ ZEConfigLoader ][ LOG ][ Created new instance of ZEConfigLoader, search directory: d:\Projects\ZirconEngine\src\data ]
-[ 2025/2/26 | 9:58:10:703 ][ ZEConfigLoader ][ LOG ][ Found JSON file at: d:\Projects\ZirconEngine\src\data\EngineData\tests\ptestcfg.json ]
-[ 2025/2/26 | 9:58:10:704 ][ ZELogger ][ LOG ][ Flushing output and closing file ]

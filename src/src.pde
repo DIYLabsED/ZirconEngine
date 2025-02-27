@@ -4,18 +4,17 @@
 // Written by DIY Labs
 
 ZEGenericLogger logger;
-ZEConfigLoader loader;
-
+ZEConfigParser parser;
 
 public void setup(){
 
     logger = new ZEGenericLogger(new File(sketchPath("data/debug.log")));
-    loader = new ZEConfigLoader(new File(sketchPath("data")), logger);
 
-    loader.initialise();
+    parser = new ZEConfigParser(new File(sketchPath("data")), logger);
 
-    logger.finish();
+    parser.initialise();
 
+    parser.getNodesByName("testnode");
 
 }
 

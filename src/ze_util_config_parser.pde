@@ -3,34 +3,95 @@
 
 // Written by DIY Labs
 
-class ZEConfigLoader{
+/*  
+        "testnode" : {                        <-- Node
 
-    ArrayList<String> _filepaths = new ArrayList<String>();  // List of all files in the search directory
+            "string" : "string",              <-- Field
+
+            "subnode" : {                     <-- Subnode
+
+                "substring" : "substring"     <-- Subfield
+
+            }
+
+        }
+*/
+
+class ZEConfigParser{
+
+    ArrayList<String> _filepaths = new ArrayList<String>(); 
+    JSONObject nodes[];
     File _searchDir;
-    ZEGenericLogger _log;
+    ZEGenericLogger _logger;
 
-    public ZEConfigLoader(File dir, ZEGenericLogger log){
+    public ZEConfigParser(File dir, ZEGenericLogger logger){
 
-        _log = log;
+        _logger = logger;
         
         if(dir.isDirectory()){
             _searchDir = dir;
         }
         else{
-            throw new IllegalArgumentException("File passed to constructor. Pass a directory instead");
+            throw new IllegalArgumentException("File passed to ZEConfigParser constructor. Pass a directory instead");
         }
 
-        _log.log(_log.TAG_LOG, "ZEConfigLoader", "Created new instance of ZEConfigLoader, search directory: " + _searchDir.getAbsolutePath());
+        _logger.log(_logger.TAG_LOG, "ZEConfigParser", "Created new instance of ZEConfigParser, search directory: " + _searchDir.getAbsolutePath());
 
     }
 
     public void initialise(){
 
         _scanDirectory(_searchDir);
+        nodes = _loadJSONObjects();
 
     }
 
+    public ArrayList<String> getFilepaths(){
+
+        return _filepaths;
+
+    }
+
+    public JSONObject[] getAllNodes(){
+
+        return nodes;
+
+    }
+
+    public void getNodesByName(String nodeName){
+
+        for(JSONObject node : nodes){
+
+            if(node.hasKey(nodeName)){
+
+                println("found " + nodeName);
+
+            }
+
+        }
+
+    }
     
+    private JSONObject[] _loadJSONObjects(){
+
+        ArrayList<JSONObject> nodeList = new ArrayList<JSONObject>();
+
+        for(String fp : _filepaths){
+
+            JSONArray config = loadJSONArray(fp);
+
+            for(int i = 0; i < config.size(); i++){
+
+                nodeList.add(config.getJSONObject(i));
+
+            }
+
+        }
+
+        return nodeList.toArray(new JSONObject[nodeList.size()]);
+
+    }
+
     private void _scanDirectory(File dir){
 
         File[] files = dir.listFiles();
@@ -47,7 +108,7 @@ class ZEConfigLoader{
                 if(file.getAbsolutePath().endsWith(".json")){ // Only JSON files allowed!
 
                     _filepaths.add(file.getAbsolutePath());
-                    _log.log(_log.TAG_LOG, "ZEConfigLoader", "Found JSON file at: " + file.getAbsolutePath());
+                    _logger.log(_logger.TAG_LOG, "ZEConfigLoader", "Found JSON file at: " + file.getAbsolutePath());
                     println(file.getAbsolutePath());
 
                 }
