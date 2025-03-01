@@ -58,20 +58,170 @@ class ZEConfigParser{
 
     }
 
-    public void getNodesByName(String nodeName){
+    public JSONObject[] getNodesOfName(String nodeName){
+
+        ArrayList<JSONObject> nodeList = new ArrayList<JSONObject>();
 
         for(JSONObject node : nodes){
 
             if(node.hasKey(nodeName)){
 
-                println("found " + nodeName);
+                nodeList.add(node.getJSONObject(nodeName));
+                _logger.log(_logger.TAG_LOG, "ZEConfigParser", "Found node: " + nodeName);
 
             }
 
         }
 
+        return nodeList.toArray(new JSONObject[nodeList.size()]);
+
+    }
+
+    public JSONObject getSubnode(JSONObject node, String subnodeName){
+
+        if(node.hasKey(subnodeName)){
+
+            return node.getJSONObject(subnodeName);
+
+        }
+        else{
+
+            _logger.log(_logger.TAG_ERR, "ZEConfigParser", "Subnode " + subnodeName + " not found in node " + node.toString());
+            throw new IllegalArgumentException("Subnode " + subnodeName + " not found in node " + node.toString());
+
+        }
+
+    }
+
+    public String getStringField(JSONObject node, String fieldName){
+
+        if(node.hasKey(fieldName)){
+
+            return node.getString(fieldName);
+
+        }
+        else{
+
+            _logger.log(_logger.TAG_ERR, "ZEConfigParser", "Field " + fieldName + " not found in node " + node.toString());
+            throw new IllegalArgumentException("Field " + fieldName + " not found in node " + node.toString());
+
+        }
+
     }
     
+    public int getIntField(JSONObject node, String fieldName){
+
+        if(node.hasKey(fieldName)){
+
+            return node.getInt(fieldName);
+
+        }
+        else{
+
+            _logger.log(_logger.TAG_ERR, "ZEConfigParser", "Field " + fieldName + " not found in node " + node.toString());
+            throw new IllegalArgumentException("Field " + fieldName + " not found in node " + node.toString());
+
+        }
+
+    }
+
+    public float getFloatField(JSONObject node, String fieldName){
+
+        if(node.hasKey(fieldName)){
+
+            return node.getFloat(fieldName);
+
+        }
+        else{
+
+            _logger.log(_logger.TAG_ERR, "ZEConfigParser", "Field " + fieldName + " not found in node " + node.toString());
+            throw new IllegalArgumentException("Field " + fieldName + " not found in node " + node.toString());
+
+        }
+
+    }
+    
+    public boolean getBoolField(JSONObject node, String fieldName){
+
+        if(node.hasKey(fieldName)){
+
+            return node.getBoolean(fieldName);
+
+        }
+        else{
+
+            _logger.log(_logger.TAG_ERR, "ZEConfigParser", "Field " + fieldName + " not found in node " + node.toString());
+            throw new IllegalArgumentException("Field " + fieldName + " not found in node " + node.toString());
+
+        }
+
+    }
+    
+    public String[] getStringArrayField(JSONObject node, String fieldName){
+
+        if(node.hasKey(fieldName)){
+
+            return node.getJSONArray(fieldName).toStringArray();
+
+        }
+        else{
+
+            _logger.log(_logger.TAG_ERR, "ZEConfigParser", "Field " + fieldName + " not found in node " + node.toString());
+            throw new IllegalArgumentException("Field " + fieldName + " not found in node " + node.toString());
+
+        }
+
+    }
+    
+    public int[] getIntArrayField(JSONObject node, String fieldName){
+
+        if(node.hasKey(fieldName)){
+
+            return node.getJSONArray(fieldName).toIntArray();
+
+        }
+        else{
+
+            _logger.log(_logger.TAG_ERR, "ZEConfigParser", "Field " + fieldName + " not found in node " + node.toString());
+            throw new IllegalArgumentException("Field " + fieldName + " not found in node " + node.toString());
+
+        }
+
+    }
+
+    public float[] getFloatArrayField(JSONObject node, String fieldName){
+
+        if(node.hasKey(fieldName)){
+
+            return node.getJSONArray(fieldName).toFloatArray();
+
+        }
+        else{
+
+            _logger.log(_logger.TAG_ERR, "ZEConfigParser", "Field " + fieldName + " not found in node " + node.toString());
+            throw new IllegalArgumentException("Field " + fieldName + " not found in node " + node.toString());
+
+        }
+
+    }
+    
+    public boolean[] getBoolArrayField(JSONObject node, String fieldName){
+
+        if(node.hasKey(fieldName)){
+
+            return node.getJSONArray(fieldName).toBooleanArray();
+
+        }
+        else{
+
+            _logger.log(_logger.TAG_ERR, "ZEConfigParser", "Field " + fieldName + " not found in node " + node.toString());
+            throw new IllegalArgumentException("Field " + fieldName + " not found in node " + node.toString());
+
+        }
+
+    }
+    
+
     private JSONObject[] _loadJSONObjects(){
 
         ArrayList<JSONObject> nodeList = new ArrayList<JSONObject>();

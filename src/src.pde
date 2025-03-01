@@ -2,7 +2,7 @@
 // Can be safely removed for embedded use
 
 // Written by DIY Labs
-// Test
+
 
 ZEGenericLogger logger;
 ZEConfigParser parser;
@@ -15,7 +15,13 @@ public void setup(){
 
     parser.initialise();
 
-    parser.getNodesByName("testnode");
+    JSONObject[] testNodes = parser.getNodesOfName("testnode");
+
+    JSONObject subtestnode = parser.getSubnode(testNodes[0], "subtestnode");
+
+    println(parser.getStringField(testNodes[0], "string"));
+    println(parser.getStringArrayField(testNodes[1], "stringarray"));
+    println(parser.getStringField(subtestnode, "substring"));
 
 }
 
