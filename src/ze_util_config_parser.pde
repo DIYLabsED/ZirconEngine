@@ -1,5 +1,5 @@
 // Util for loading JSON files from a directory
-// Currently only supports JSON files. I don't think ZE needs custom file extensions
+// Only reads files with .json extension!
 
 // Written by DIY Labs
 
